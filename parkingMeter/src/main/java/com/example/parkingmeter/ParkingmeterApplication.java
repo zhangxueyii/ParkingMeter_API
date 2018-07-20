@@ -1,9 +1,12 @@
 package com.example.parkingmeter;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
 @SpringBootApplication
+@MapperScan( "com.example.parkingmeter.dao" )
 public class ParkingmeterApplication {
 
     public static void main(String[] args) {
