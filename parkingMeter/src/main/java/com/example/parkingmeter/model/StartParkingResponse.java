@@ -2,13 +2,13 @@ package com.example.parkingmeter.model;
 
 public class StartParkingResponse extends BaseResponse {
 
-    private String UniqueId;
+    private String uniqueId;
 
     public String getUniqueId() {
-        return UniqueId;
+        return uniqueId;
     }
 
     public void setUniqueId(String uniqueId) {
-        UniqueId = uniqueId;
+        this.uniqueId = uniqueId;
     }
 }

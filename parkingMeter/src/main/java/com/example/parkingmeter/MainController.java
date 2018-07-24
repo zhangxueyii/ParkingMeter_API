@@ -1,16 +1,11 @@
 package com.example.parkingmeter;
 
-import com.example.parkingmeter.model.EndParkingResponse;
-import com.example.parkingmeter.model.ParkingInfo;
-import com.example.parkingmeter.model.StartParkingResponse;
+import com.example.parkingmeter.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.sql.Time;
 import java.sql.Timestamp;
-import java.time.Instant;
-import java.util.Date;
 import java.util.UUID;
 
 @RestController
@@ -51,6 +46,23 @@ public class MainController {
 
         if (parkingService.updateEndParking(uniqueId, Timestamp.valueOf(timeStamp)) == 1) {
             response.setSuccessful(true);
+        }
+
+        return response;
+    }
+
+    @RequestMapping("/getLastParking")
+    public LastParkingInfoResponse getLastParking() {
+        LastParkingInfoResponse response = new LastParkingInfoResponse();
+        response.setSuccessful(false);
+
+        ParkingInfo parkingInfo = parkingService.getLastParking();
+        if (parkingInfo != null) {
+            response.setSuccessful(true);
+            response.setUnique_id(parkingInfo.getUnique_id());
+            response.setBeginTime(parkingInfo.getBeginTime().toInstant());
+            response.setEndTime(parkingInfo.getEndTime().toInstant());
+            response.setIsDel(parkingInfo.getDel());
         }
 
         return response;

@@ -23,6 +23,15 @@
         where unique_id = #{param1}
     </update>
 
+    <select id="selectLastParkingInfo" resultType="com.example.parkingmeter.model.ParkingInfo">
+        SELECT
+        <include refid="BASE_COLUMN"/>
+        FROM
+        <include refid="BASE_TABLE"/>
+        ORDER BY id DESC
+        LIMIT 1
+    </select>
+
     <select id="selectRecentParkings" resultType="com.example.parkingmeter.model.ParkingInfo">
         SELECT
         <include refid="BASE_COLUMN"/>

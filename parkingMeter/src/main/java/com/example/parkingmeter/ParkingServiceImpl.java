@@ -23,4 +23,9 @@ public class ParkingServiceImpl implements ParkingService {
     public int updateEndParking( String uniqueId, Timestamp timeStamp) {
         return parkingDao.updateEndTime(uniqueId, timeStamp);
     }
+
+    @Override
+    public ParkingInfo getLastParking() {
+        return parkingDao.selectLastParkingInfo();
+    }
 }
